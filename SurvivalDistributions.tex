@@ -1,0 +1,154 @@
+%%% LaTeX Template: Article/Thesis/etc. with colored headings and special fonts
+%%%
+%%% Source: http://www.howtotex.com/
+%%% Feel free to distribute this template, but please keep to referal to http://www.howtotex.com/ here.
+%%% February 2011
+
+%%%%% Preamble
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[bitstream-charter]{mathdesign}						% Input encoding
+\usepackage{amsmath}									% Math
+
+\usepackage{xcolor}
+\definecolor{bl}{rgb}{0.529,0.149,0.341}
+
+\usepackage{sectsty}
+\usepackage[compact]{titlesec} 
+\allsectionsfont{\color{bl}\scshape\selectfont}
+
+%%%%% Definitions
+% Define a new command that prints the title only
+\makeatletter							% Begin definition
+\def\printtitle{%						% Define command: \printtitle
+    {\color{bl} \centering \huge \sc \textbf{\@title}\par}}		% Typesetting
+\makeatother							% End definition
+
+\title{Distribuciones de probabilidad \\ 
+		\large \vspace*{-10pt} para el an\'alisis de Supervivencia\vspace*{10pt}}
+
+% Define a new command that prints the author(s) only
+\makeatletter							% Begin definition
+\def\printauthor{%					% Define command: \printauthor
+    {\centering \small \@author}}				% Typesetting
+\makeatother							% End definition
+
+\author{%
+	Karen Viviana Rodr\'iguez Mac\'ias \\
+	14 de Octubre del 2016 \\
+	\vspace{20pt}
+	}
+
+% Custom headers and footers
+\usepackage{fancyhdr}
+	\pagestyle{fancy}					% Enabling the custom headers/footers
+\usepackage{lastpage}	
+	% Header (empty)
+	\lhead{}
+	\chead{}
+	\rhead{}
+	% Footer (you may change this to your own needs)
+	\lfoot{\footnotesize Estad\'istica III}
+	\cfoot{}
+	\rfoot{\footnotesize Página \thepage\ de \pageref{LastPage}}	% "Page 1 of 2"
+	\renewcommand{\headrulewidth}{0.0pt}
+	\renewcommand{\footrulewidth}{0.4pt}
+
+% Change the abstract environment
+\usepackage[runin]{abstract}			% runin option for a run-in title
+\setlength\absleftindent{30pt}		% left margin
+\setlength\absrightindent{30pt}		% right margin
+\abslabeldelim{\quad}						% 
+\setlength{\abstitleskip}{-10pt}
+\renewcommand{\abstractname}{}
+\renewcommand{\abstracttextfont}{\color{bl} \small \slshape}	% slanted text
+
+
+%%% Start of the document
+\begin{document}
+%%% Top of the page: Author, Title and Abstact
+\printtitle 
+
+\printauthor
+
+\begin{abstract}
+En el presente documento se definen 5 distribuciones que se pueden utilizar para el análisis de supervivencia, ya que tienen soporte en los positivos. Se obtiene su función de distribución, de supervivencia y de riesgo utilizando formulas de equivalencia entre ellas.
+\end{abstract}
+
+%%% Start of the 'real' content of the article, using a two column layout
+\section{Distribuci\'on Pareto}
+Sea $ x ~ Pareto(\lambda,\kappa) $ decimos que $x$ se distribuye Pareto con parametros $\lambda$ y $\kappa$. La variable aleatoria Pareto $x$ con parámetros positivos $\lambda$ y $\kappa$ tiene la siguiente función de distribución acumulativa :
+
+\begin{equation*}
+	F(x) = P(X \leqslant x) = 1 -  \left( \frac{\lambda}{x} \right) ^ \kappa \hspace{1.5cm} x>\lambda
+\end{equation*}
+
+\subsubsection*{Funci\'on de densidad}
+
+\begin{equation*}
+\boxed{
+f(x) = \frac{\kappa \lambda ^ \kappa}{ x^{\kappa+1}} \hspace{1.5cm} x > \lambda}
+\end{equation*}
+Esto es porque dada la función de distribución acumulativa podemos obtener la función de densidad con su derivada, como se muestra a continuación : 
+\begin{align*}
+f(x) &= \frac{\partial F(x)}{\partial x}	 \\
+	&=	\frac{\partial}{\partial x} \left(1 - \frac{\lambda ^ \kappa}{x ^ \kappa} \right)\\
+	&= (-\lambda ^ \kappa) \left( \frac{-\kappa x^{\kappa-1}}{x^{2\kappa}} \right) \\
+	&= (-\lambda ^ \kappa) \left( \frac{-\kappa}{x^{\kappa+1}} \right)\\
+	&= \frac{\kappa \lambda^\kappa}{x^{\kappa+1}}
+\end{align*} 
+
+\subsubsection*{Funci\'on de Supervivencia}
+\begin{equation*}
+\boxed{
+S(x) =\left( \frac{\lambda}{x} \right) ^ \kappa \hspace{1.5cm} x > \lambda}
+\end{equation*}
+\newpage
+La función de Supervivencia en el soporte de x se obtiene de la siguiente manera.
+
+\begin{align*}
+S(x) &= P(X \geqslant x) \\
+     &= 1 - F(x) \\
+     &= 1 - \left(1-\frac{\lambda}{x} \right)^\kappa  \\
+     &=\left( \frac{\lambda}{x} \right) ^ \kappa
+\end{align*}
+
+\subsubsection{Funci\'on de riesgo}
+\begin{equation*}
+\boxed{
+h(x) = \frac{\kappa}{x}  \hspace{1.5cm} x > \lambda}
+\end{equation*}
+
+La función de riesgo en el soporte de x se obtiene de la siguiente manera.
+
+\begin{align*}
+h(x) &= \frac{f(x)}{S(x)} \\
+     &= \frac{\frac{\kappa \lambda ^ \kappa}{ x^{\kappa+1}}}{\left( \frac{\lambda}{x} \right) ^ \kappa} \\
+     &= \frac{x^\kappa \kappa \lambda^\kappa}{x^{\kappa+1} \lambda^\kappa}   \\
+     &= \frac{\kappa}{x}
+\end{align*}
+
+\subsubsection{Funci\'on de riesgo acumulativa}
+\begin{equation*}
+\boxed{
+H(x) = -\kappa (\ln \lambda - \ln x)  \hspace{1.5cm} x > \lambda}
+\end{equation*}
+La función de riesgo acumulativa en el soporte de x se obtiene de la siguiente manera.
+
+\begin{align*}
+H(x) &= -\ln S(x) \\
+     &= - \ln \left( \frac{\lambda}{x} \right) ^ \kappa \\
+     &= -\kappa (\ln \lambda - \ln x)
+\end{align*}
+
+\section{Distribuci\'on Muth}
+
+\section{Distribuci\'on Lomax}
+
+\section{Distribuci\'on Rayleigh}
+
+\section{Distribuci\'on Poder (Power Distribution)}
+
+
+\end{document}
