@@ -114,7 +114,7 @@ S(x) &= P(X \geqslant x) \\
      &=\left( \frac{\lambda}{x} \right) ^ \kappa
 \end{align*}
 
-\subsubsection{Funci\'on de riesgo}
+\subsubsection*{Funci\'on de riesgo}
 \begin{equation*}
 \boxed{
 h(x) = \frac{\kappa}{x}  \hspace{1.5cm} x > \lambda}
@@ -129,7 +129,7 @@ h(x) &= \frac{f(x)}{S(x)} \\
      &= \frac{\kappa}{x}
 \end{align*}
 
-\subsubsection{Funci\'on de riesgo acumulativa}
+\subsubsection*{Funci\'on de riesgo acumulativa}
 \begin{equation*}
 \boxed{
 H(x) = -\kappa (\ln \lambda - \ln x)  \hspace{1.5cm} x > \lambda}
@@ -143,12 +143,261 @@ H(x) &= -\ln S(x) \\
 \end{align*}
 
 \section{Distribuci\'on Muth}
+Sea $ x ~ Muth(\kappa) $ decimos que $x$ se distribuye Muth con parametro $\kappa$. La variable aleatoria Muth $x$ con parámetro positivo $\kappa$ tiene la siguiente función de distribución acumulativa :
+
+\begin{equation*}
+	F(x) = P(X \leqslant x) = 1 -  e^{\left(-\frac{e^{\kappa x}}{\kappa} + \kappa x + \frac{1}{\kappa} \right) } \hspace{1.5cm} x>0
+\end{equation*}
+
+\subsubsection*{Funci\'on de densidad}
+
+\begin{equation*}
+\boxed{
+f(x) =  \left( e^{\kappa x} - \kappa \right) e^{\left(-\frac{e^{\kappa x}}{\kappa} + \kappa x + \frac{1}{\kappa} \right) }}
+\end{equation*}
+Esto es porque dada la función de distribución acumulativa podemos obtener la función de densidad con su derivada, como se muestra a continuación : 
+\begin{align*}
+f(x) &= \frac{\partial F(x)}{\partial x}	 \\
+	&=	\frac{\partial}{\partial x} \left(1 - e^{\left(-\frac{e^{\kappa x}}{\kappa} + \kappa x + \frac{1}{\kappa} \right) } \right)\\
+	&= \left( e^{\kappa x} - \kappa \right) e^{\left(-\frac{e^{\kappa x}}{\kappa} + \kappa x + \frac{1}{\kappa} \right) } 
+\end{align*} 
+
+\subsubsection*{Funci\'on de Supervivencia}
+\begin{equation*}
+\boxed{
+S(x) =e^{\left(-\frac{e^{\kappa x}}{\kappa} + \kappa x + \frac{1}{\kappa} \right) } \hspace{1.5cm} x > 0}
+\end{equation*}
+
+La función de Supervivencia en el soporte de x se obtiene de la siguiente manera.
+
+\begin{align*}
+S(x) &= P(X \geqslant x) \\
+     &= 1 - F(x) \\
+     &= 1 - \left(1-e^{\left(-\frac{e^{\kappa x}}{\kappa} + \kappa x + \frac{1}{\kappa} \right) } \right)^\kappa  \\
+     &=e^{\left(-\frac{e^{\kappa x}}{\kappa} + \kappa x + \frac{1}{\kappa} \right) }
+\end{align*}
+
+\subsubsection*{Funci\'on de riesgo}
+\begin{equation*}
+\boxed{
+h(x) = e^{\kappa x} - \kappa  \hspace{1.5cm} x > 0}
+\end{equation*}
+
+La función de riesgo en el soporte de x se obtiene de la siguiente manera.
+
+\begin{align*}
+h(x) &= \frac{f(x)}{S(x)} \\
+     &= \frac{\left( e^{\kappa x} - \kappa \right) e^{\left(-\frac{e^{\kappa x}}{\kappa} + \kappa x + \frac{1}{\kappa} \right) }}{e^{\left(-\frac{e^{\kappa x}}{\kappa} + \kappa x + \frac{1}{\kappa} \right)}} \\
+     &= e^{\kappa x} - \kappa
+\end{align*}
+
+\subsubsection*{Funci\'on de riesgo acumulativa}
+\begin{equation*}
+\boxed{
+H(x) = \frac{e^{\kappa x}}{\kappa} - \kappa x - \frac{1}{\kappa} \hspace{1.5cm} x > 0}
+\end{equation*}
+La función de riesgo acumulativa en el soporte de x se obtiene de la siguiente manera.
+
+\begin{align*}
+H(x) &= -\ln S(x) \\
+     &= - \ln \left( e^{\left(-\frac{e^{\kappa x}}{\kappa} + \kappa x + \frac{1}{\kappa} \right) } \right)  \\
+     &= \frac{e^{\kappa x}}{\kappa} - \kappa x - \frac{1}{\kappa}
+\end{align*}
 
 \section{Distribuci\'on Lomax}
+Sea $ x ~ Lomax(\lambda,\kappa) $ decimos que $x$ se distribuye Lomax con parametros $\lambda$ y $\kappa$. La variable aleatoria Lomax $x$ con parámetros positivos $\lambda$ y $\kappa$ tiene la siguiente función de distribución acumulativa :
+
+\begin{equation*}
+	F(x) = P(X \leqslant x) = 1 -  \left( 1 + \lambda x \right) ^ {-\kappa} \hspace{1.5cm} x>0
+\end{equation*}
+
+\subsubsection*{Funci\'on de densidad}
+
+\begin{equation*}
+\boxed{
+f(x) = \frac{\lambda \kappa}{ (1+ \lambda x)^{k+1}} \hspace{1.5cm} x > 0}
+\end{equation*}
+Esto es porque dada la función de distribución acumulativa podemos obtener la función de densidad con su derivada, como se muestra a continuación : 
+
+\begin{align*}
+f(x) &= \frac{\partial F(x)}{\partial x}	 \\
+	&=	\frac{\partial}{\partial x} \left(   1 -  \left( 1 + \lambda x \right) ^ {-\kappa} \right)\\
+	&= \frac{\lambda \kappa}{ (1+ \lambda x)^{k+1}}
+\end{align*} 
+
+
+\subsubsection*{Funci\'on de Supervivencia}
+\begin{equation*}
+\boxed{
+S(x) = \left( 1 + \lambda x \right) ^ {-\kappa} \hspace{1.5cm} x > 0}
+\end{equation*}
+
+La función de Supervivencia en el soporte de x se obtiene de la siguiente manera.
+
+\begin{align*}
+S(x) &= P(X \geqslant x) \\
+     &= 1 - F(x) \\
+     &= 1 - \left(1- \left( 1 + \lambda x \right) ^ {-\kappa} \right)  \\
+     &= \left( 1 + \lambda x \right) ^ {-\kappa}
+\end{align*}
+
+\subsubsection*{Funci\'on de riesgo}
+\begin{equation*}
+\boxed{
+h(x) = \frac{\lambda \kappa}{1 + \lambda x} \hspace{1.5cm} x > 0}
+\end{equation*}
+
+La función de riesgo en el soporte de x se obtiene de la siguiente manera.
+
+\begin{align*}
+h(x) &= \frac{f(x)}{S(x)} \\
+     &= \frac{\frac{\lambda \kappa}{ (1+ \lambda x)^{k+1}}}{\left( 1 + \lambda x \right) ^ {-\kappa}} \\
+     &= \frac{\lambda \kappa}{1 + \lambda x}
+\end{align*}
+
+\subsubsection*{Funci\'on de riesgo acumulativa}
+\begin{equation*}
+\boxed{
+H(x) = \kappa ln \left(1 + \lambda x \right) \hspace{1.5cm} x > 0}
+\end{equation*}
+La función de riesgo acumulativa en el soporte de x se obtiene de la siguiente manera.
+
+\begin{align*}
+H(x) &= -\ln S(x) \\
+     &= - \ln \left( \left( 1 + \lambda x \right) ^ {-\kappa} \right)  \\
+     &= \kappa ln \left(1 + \lambda x \right)
+\end{align*}
 
 \section{Distribuci\'on Rayleigh}
 
+Sea $ x ~ Rayleigh(\alpha) $ decimos que $x$ se distribuye Rayleigh con parametro $\alpha$. La variable aleatoria Rayleigh $x$ tiene la siguiente función de distribución acumulativa :
+
+\begin{equation*}
+	F(x) = P(X \leqslant x) = 1 - e^ {-\frac{x^2}{\alpha}} \hspace{1.5cm} x>0
+\end{equation*}
+
+
+\subsubsection*{Funci\'on de densidad}
+
+\begin{equation*}
+\boxed{
+f(x) = \frac{2xe^{\frac{-x^2}{\alpha}}}{\alpha} \hspace{1.5cm} x > 0}
+\end{equation*}
+Esto es porque dada la función de distribución acumulativa podemos obtener la función de densidad con su derivada, como se muestra a continuación : 
+
+\begin{align*}
+f(x) &= \frac{\partial F(x)}{\partial x}	 \\
+	&=	\frac{\partial}{\partial x} \left(   1 - e^ {-\frac{x^2}{\alpha}} \right)\\
+	&= \frac{2xe^{\frac{-x^2}{\alpha}}}{\alpha}
+\end{align*}
+
+
+\subsubsection*{Funci\'on de Supervivencia}
+\begin{equation*}
+\boxed{
+S(x) = e^{\frac{-x^2}{\alpha}} \hspace{1.5cm} x > 0}
+\end{equation*}
+
+La función de Supervivencia en el soporte de x se obtiene de la siguiente manera.
+
+\begin{align*}
+S(x) &= P(X \geqslant x) \\
+     &= 1 - F(x) \\
+     &= 1 - \left(1 - e^ {-\frac{x^2}{\alpha}} \right)  \\
+     &= e^{\frac{-x^2}{\alpha}}
+\end{align*}
+
+
+\subsubsection*{Funci\'on de riesgo}
+\begin{equation*}
+\boxed{
+h(x) = \frac{2x}{\alpha} \hspace{1.5cm} x > 0}
+\end{equation*}
+
+La función de riesgo en el soporte de x se obtiene de la siguiente manera.
+
+\begin{align*}
+h(x) &= \frac{f(x)}{S(x)} \\
+     &= \frac{\frac{2x e^{\frac{-x^2}{\alpha}}}{\alpha}}{e^{\frac{-x^2}{\alpha}}} \\
+     &= \frac{2x}{\alpha} 
+\end{align*}
+
+
+\subsubsection*{Funci\'on de riesgo acumulativa}
+\begin{equation*}
+\boxed{
+H(x) = \frac{x^2}{\alpha} \hspace{1.5cm} x > 0}
+\end{equation*}
+La función de riesgo acumulativa en el soporte de x se obtiene de la siguiente manera.
+
+\begin{align*}
+H(x) &= -\ln S(x) \\
+     &= - \ln \left( e^{\frac{-x^2}{\alpha}} \right)  \\
+     &= \frac{x^2}{\alpha}
+\end{align*}
+
 \section{Distribuci\'on Poder (Power Distribution)}
 
+Sea $ x ~ Power(\alpha,\beta) $ decimos que $x$ se distribuye Power con parametros $\alpha$ y $\beta$ . La variable aleatoria Power $x$ tiene la siguiente función de distribución acumulativa :
+
+\begin{equation*}
+	F(x) = \frac{x^\beta}{\alpha^\beta} \hspace{1.5cm} 0<x<\alpha
+\end{equation*}
+
+
+\subsubsection*{Funci\'on de densidad}
+
+\begin{equation*}
+\boxed{
+f(x) = \frac{\beta}{\alpha^\beta} x^{\beta -1} \hspace{1.5cm} 0<x<\alpha}
+\end{equation*}
+
+Esto es porque dada la función de distribución acumulativa podemos obtener la función de densidad con su derivada, como se muestra a continuación : 
+
+\begin{align*}
+f(x) &= \frac{\partial F(x)}{\partial x}	 \\
+	&=	\frac{\partial}{\partial x} \left( \frac{x^\beta}{\alpha^\beta} \right)\\
+	&= \frac{\beta}{\alpha^\beta} x^{\beta -1}
+\end{align*}
+
+\subsubsection*{Funci\'on de Supervivencia}
+\begin{equation*}
+\boxed{
+S(x) = 1 - \frac{x^\beta}{\alpha^\beta} \hspace{1.5cm} 0<x<\alpha}
+\end{equation*}
+
+La función de Supervivencia en el soporte de x se obtiene de la siguiente manera.
+
+\begin{align*}
+S(x) &= P(X \geqslant x) \\
+     &= 1 - F(x) \\
+     &= 1 - \left(\frac{x^\beta}{\alpha^\beta} \right) 
+\end{align*}
+
+\subsubsection*{Funci\'on de riesgo}
+\begin{equation*}
+\boxed{
+h(x) = \frac{2x}{\alpha} \hspace{1.5cm} 0<x<\alpha}
+\end{equation*}
+
+La función de riesgo en el soporte de x se obtiene de la siguiente manera.
+
+\begin{align*}
+h(x) &= \frac{f(x)}{S(x)} \\
+     &= \frac{\frac{\beta}{\alpha^\beta} x^{\beta -1}}{1 - \frac{x^\beta}{\alpha^\beta}} \\
+     &= \frac{\beta x^{\beta-1}}{\alpha^\beta - x^\beta}
+\end{align*}
+
+\subsubsection*{Funci\'on de riesgo acumulativa}
+\begin{equation*}
+\boxed{
+H(x) = - \ln \left( 1 - \left(\frac{x}{\alpha} \right) ^\beta \right)   \hspace{1.5cm} 0 < x <\alpha}
+\end{equation*}
+La función de riesgo acumulativa en el soporte de x se obtiene de la siguiente manera.
+
+\begin{align*}
+H(x) &= -\ln S(x) \\
+     &= - \ln \left( 1 - \left(\frac{x^\beta}{\alpha^\beta} \right) \right)  
+\end{align*}
 
 \end{document}
